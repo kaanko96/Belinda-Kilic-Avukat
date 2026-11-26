@@ -1,24 +1,13 @@
-# Av. Belinda Kılıç – Hukuk ve Danışmanlık
+# Av. Belinda Kılıç – Webseite (TR / EN / DA)
 
-Statische Webseite (Türkisch / Englisch). Kein Build-Schritt nötig.
+Alle Dateien liegen ohne Unterordner im Hauptverzeichnis, so kann man sie einfach auf GitHub hochladen.
 
-## Dateien
-- `index.html` – Seite (türkische Texte)
-- `script.js` – englische Texte, Sprachumschalter, Menü
+- `index.html` – Seite mit den türkischen Texten
+- `script.js` – englische und dänische Texte, Sprachumschalter
 - `styles.css` – Design
-- `` – Logo, Favicon, Vorschaubild
+- Bilder: `logo-full.jpg`, `favicon.png`, `apple-touch-icon.png`, `og-image.jpg`
 
-## Auf GitHub Pages veröffentlichen
-1. Neues Repository auf GitHub anlegen (z. B. `belindakilic`).
-2. **Add file → Upload files** und alle Dateien hochladen (inkl. Ordner `assets`).
-3. **Settings → Pages → Branch: `main` / `(root)` → Save**.
-4. Nach 1–2 Minuten ist die Seite unter `https://BENUTZERNAME.github.io/REPO/` erreichbar.
+**Porträtfoto:** Ein Foto von Belinda als `belinda.jpg` hochladen (am besten hochkant, mind. 900 px breit).
+Es erscheint dann automatisch im Bereich „Hakkımda“. Solange es fehlt, wird ein Ersatzfoto gezeigt.
 
-Eigene Domain (z. B. `belindakilic.av.tr`): unter Settings → Pages → Custom domain eintragen
-und beim Domain-Anbieter einen CNAME-Eintrag auf `BENUTZERNAME.github.io` setzen.
-
-## Anpassen
-- **Facebook-Link:** in `index.html` überall `https://www.facebook.com/FACEBOOK_SAYFA_ADI` ersetzen (3 Stellen).
-- **WhatsApp / Telefon:** Nummer `905079144378` (in `index.html` und `script.js`).
-- **Englische Texte:** in `script.js` im Block `EN`.
-- Englische Version direkt verlinken: `.../?lang=en`
+Sprache direkt verlinken: `?lang=en` oder `?lang=da` an die Adresse anhängen.

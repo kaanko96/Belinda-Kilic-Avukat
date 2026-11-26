@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Av. Belinda Kılıç | Hukuk ve Danışmanlık · Antalya</title>
-  <meta name="description" content="Av. Belinda Kılıç – Antalya Barosu'na kayıtlı avukat. Ceza, aile, boşanma, miras, gayrimenkul, iş ve icra hukuku alanlarında hukuki danışmanlık ve avukatlık hizmeti. Muratpaşa / Antalya.">
+  <meta name="description" content="Av. Belinda Kılıç – Antalya Barosu'na kayıtlı avukat. Ceza, aile, boşanma, miras, gayrimenkul, iş ve icra hukuku; yurt dışında yaşayan vatandaşlar için tanıma–tenfiz, miras ve tapu işlemleri. Muratpaşa / Antalya.">
   <meta property="og:title" content="Av. Belinda Kılıç | Hukuk ve Danışmanlık">
-  <meta property="og:description" content="Antalya Barosu'na kayıtlı avukat · Muratpaşa / Antalya">
+  <meta property="og:description" content="Antalya Barosu'na kayıtlı avukat · Yurt dışında yaşayanlar için Türkiye'deki dava ve işlemlerde hukuki destek">
   <meta property="og:image" content="og-image.jpg">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0b0b0b">
@@ -14,8 +14,19 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Foto lädt nicht -> Ersatzfoto, sonst eleganter Platzhalter */
+    function imgFail(img) {
+      var fb = img.getAttribute('data-fallback');
+      if (fb) { img.removeAttribute('data-fallback'); img.src = fb; return; }
+      var box = img.closest('[data-photo]');
+      if (box) box.classList.add('photo-missing');
+      img.remove();
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">İçeriğe geç</a>
@@ -34,15 +45,18 @@
       <nav class="nav" id="nav" aria-label="Ana menü">
         <a href="#hakkimda" data-i18n="navAbout">Hakkımda</a>
         <a href="#calisma-alanlari" data-i18n="navAreas">Çalışma Alanları</a>
+        <a href="#yurt-disi" data-i18n="navAbroad">Yurt Dışındakiler</a>
         <a href="#surec" data-i18n="navProcess">Süreç</a>
         <a href="#iletisim" data-i18n="navContact">İletişim</a>
       </nav>
 
       <div class="header-actions">
-        <div class="lang-switch" role="group" aria-label="Dil / Language">
+        <div class="lang-switch" role="group" aria-label="Dil / Language / Sprog">
           <button type="button" data-lang-btn="tr" aria-pressed="true">TR</button>
           <span aria-hidden="true">/</span>
           <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" data-lang-btn="da" aria-pressed="false">DA</button>
         </div>
         <button class="menu-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menü">
           <span></span><span></span>
@@ -62,13 +76,13 @@
             Belinda Kılıç
           </h1>
           <p class="hero-script" data-i18n="heroScript">Hukuk ve Danışmanlık</p>
-          <p class="hero-lead" data-i18n="heroLead">Bireylere ve işletmelere; ceza, aile, miras, gayrimenkul, iş ve icra hukuku başta olmak üzere geniş bir alanda hukuki danışmanlık ve avukatlık hizmeti.</p>
+          <p class="hero-lead" data-i18n="heroLead">Bireylere ve işletmelere; ceza, aile, miras, gayrimenkul, iş ve icra hukuku başta olmak üzere geniş bir alanda hukuki danışmanlık ve avukatlık hizmeti. Yurt dışında yaşayan vatandaşlarımızın Türkiye'deki dava ve işlemlerinde de yanınızdayız.</p>
           <div class="hero-buttons">
-            <a class="btn btn-light" href="https://wa.me/905079144378?text=Merhaba%20Av.%20Belinda%20K%C4%B1l%C4%B1%C3%A7%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" data-wa>
+            <a class="btn btn-light" href="https://wa.me/905079144378" target="_blank" rel="noopener" data-wa>
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
               <span data-i18n="btnWhatsapp">WhatsApp ile yazın</span>
             </a>
-            <a class="btn btn-outline" href="#iletisim" data-i18n="btnContact">İletişim Bilgileri</a>
+            <a class="btn btn-outline" href="#yurt-disi" data-i18n="btnAbroad">Yurt Dışında Yaşayanlar</a>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
@@ -82,9 +96,12 @@
     <section class="section" id="hakkimda">
       <div class="container about-grid">
         <div class="about-visual reveal">
-          <div class="frame">
-            <img src="monogram.jpg" alt="Belinda Kılıç Hukuk ve Danışmanlık logosu" width="512" height="512" loading="lazy">
-          </div>
+          <!-- PORTRAIT: Foto von Belinda als "belinda.jpg" hochladen, dann erscheint es hier automatisch -->
+          <figure class="photo portrait" data-photo>
+            <img src="belinda.jpg" alt="Av. Belinda Kılıç" loading="lazy"
+                 data-fallback="https://images.unsplash.com/photo-1768839722927-df0ef3188f6d?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                 onerror="imgFail(this)">
+          </figure>
           <dl class="id-card">
             <div><dt data-i18n="cardBar">Baro</dt><dd data-i18n="cardBarVal">Antalya Barosu</dd></div>
             <div><dt data-i18n="cardReg">Sicil No</dt><dd>10989</dd></div>
@@ -94,25 +111,46 @@
 
         <div class="about-text reveal">
           <p class="section-label" data-i18n="aboutLabel">Hakkımda</p>
-          <h2 data-i18n="aboutTitle">Av. Belinda Kılıç</h2>
-          <p data-i18n="aboutP1">Av. Belinda Kılıç, 2022 yılında Selçuk Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Avukatlık stajını 2023 yılında İzmir Barosu'nda tamamlamış; halen Antalya Barosu'na kayıtlı olarak Antalya'da serbest avukatlık yapmaktadır.</p>
-          <p data-i18n="aboutP2">Bürosunda ceza, aile, miras, gayrimenkul, iş, icra ve sözleşmeler hukuku başta olmak üzere pek çok alanda bireylere ve işletmelere danışmanlık ve dava takibi hizmeti sunmaktadır. Her dosyada müvekkilin süreç hakkında açık ve anlaşılır biçimde bilgilendirilmesine önem verir.</p>
+          <h2>Av. Belinda Kılıç</h2>
+          <p class="about-role" data-i18n="aboutRole">Kurucu Avukat · Belinda Kılıç Hukuk ve Danışmanlık</p>
+          <p data-i18n="aboutP1">Av. Belinda Kılıç, 2022 yılında Selçuk Üniversitesi Hukuk Fakültesi'nden mezun olmuştur. Avukatlık stajını 2023 yılında İzmir Barosu'nda tamamlamış; ardından Antalya'da kendi bürosunu kurarak Antalya Barosu'na kayıtlı serbest avukat olarak çalışmaya başlamıştır.</p>
+          <p data-i18n="aboutP2">Büro; ceza, aile ve boşanma, miras, gayrimenkul ve kira, iş, icra ve iflas, ticaret ile sözleşmeler hukuku başta olmak üzere geniş bir yelpazede bireylere ve işletmelere danışmanlık ve dava takibi hizmeti sunmaktadır. Dava öncesi danışmanlıktan sözleşme hazırlığına, arabuluculuk süreçlerinden mahkeme aşamasına kadar her adım titizlikle takip edilir.</p>
+          <p data-i18n="aboutP3">Çalışmalarının önemli bir bölümünü, yurt dışında yaşayan vatandaşlarımızın Türkiye'deki hukuki işleri oluşturmaktadır. Başta Avrupa olmak üzere farklı ülkelerde yaşayan pek çok gurbetçimize; yabancı mahkeme kararlarının tanınması ve tenfizi, miras ve veraset işlemleri, tapu ve gayrimenkul uyuşmazlıkları gibi konularda, çoğu zaman Türkiye'ye gelmelerine gerek kalmadan destek olmuştur.</p>
+          <p data-i18n="aboutP4">Her dosyada müvekkilin süreç hakkında açık, anlaşılır ve düzenli biçimde bilgilendirilmesini; avukatlık meslek kuralları ve sır saklama yükümlülüğü çerçevesinde güvenilir bir iletişim kurulmasını esas alır. Görüşmeler Türkçe ve İngilizce yapılabilmektedir.</p>
 
           <ol class="timeline">
-            <li>
-              <span class="tl-year">2022</span>
-              <span class="tl-text" data-i18n="tl1">Selçuk Üniversitesi Hukuk Fakültesi – Mezuniyet</span>
-            </li>
-            <li>
-              <span class="tl-year">2023</span>
-              <span class="tl-text" data-i18n="tl2">İzmir Barosu – Avukatlık stajının tamamlanması</span>
-            </li>
-            <li>
-              <span class="tl-year" data-i18n="tlNow">Bugün</span>
-              <span class="tl-text" data-i18n="tl3">Antalya Barosu – Serbest avukat (Sicil No: 10989)</span>
-            </li>
+            <li><span class="tl-year">2022</span><span class="tl-text" data-i18n="tl1">Selçuk Üniversitesi Hukuk Fakültesi – Mezuniyet</span></li>
+            <li><span class="tl-year">2023</span><span class="tl-text" data-i18n="tl2">İzmir Barosu – Avukatlık stajının tamamlanması</span></li>
+            <li><span class="tl-year" data-i18n="tlNow">Bugün</span><span class="tl-text" data-i18n="tl3">Antalya Barosu – Serbest avukat (Sicil No: 10989)</span></li>
           </ol>
         </div>
+      </div>
+
+      <!-- Misyon / Vizyon / Değerler -->
+      <div class="container mv-grid">
+        <div class="mv reveal">
+          <p class="section-label" data-i18n="misLabel">Misyon</p>
+          <p class="mv-text" data-i18n="misText">Müvekkillerin hak ve menfaatlerini hukukun üstünlüğü ilkesi doğrultusunda, özenle ve şeffaf bir iletişimle korumak; hukuki süreçleri herkes için anlaşılır kılmak.</p>
+        </div>
+        <div class="mv reveal">
+          <p class="section-label" data-i18n="visLabel">Vizyon</p>
+          <p class="mv-text" data-i18n="visText">Türkiye'de ve yurt dışında yaşayan müvekkillerin, mesafeden bağımsız olarak güvenle ulaşabildiği, ilkeli ve çözüm odaklı bir hukuk bürosu olmak.</p>
+        </div>
+      </div>
+
+      <div class="container values">
+        <div class="value reveal"><span class="value-no">01</span><h3 data-i18n="v1t">Güven ve Gizlilik</h3><p data-i18n="v1d">Paylaşılan her bilgi, avukatlık sır saklama yükümlülüğü kapsamında korunur.</p></div>
+        <div class="value reveal"><span class="value-no">02</span><h3 data-i18n="v2t">Şeffaflık</h3><p data-i18n="v2d">Süreç, süreler ve masraflar en baştan açık bir şekilde paylaşılır.</p></div>
+        <div class="value reveal"><span class="value-no">03</span><h3 data-i18n="v3t">Ulaşılabilirlik</h3><p data-i18n="v3d">Telefon, WhatsApp ve e-posta ile; yurt dışından da kolayca iletişim.</p></div>
+        <div class="value reveal"><span class="value-no">04</span><h3 data-i18n="v4t">Özen</h3><p data-i18n="v4d">Her dosya, kendine özgü koşulları dikkate alınarak titizlikle hazırlanır.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ FOTO-BAND ============ -->
+    <section class="band" data-photo aria-label="Adalet mülkün temelidir">
+      <img src="https://images.unsplash.com/photo-1505488387362-48bc38155987?w=2000&amp;q=75&amp;auto=format&amp;fit=crop" alt="" loading="lazy" onerror="imgFail(this)">
+      <div class="band-inner container">
+        <p class="band-quote" data-i18n="quote">“Adalet mülkün temelidir.”</p>
       </div>
     </section>
 
@@ -123,80 +161,100 @@
           <p class="section-label" data-i18n="areasLabel">Çalışma Alanları</p>
           <h2 data-i18n="areasTitle">Hukuki destek sunulan başlıca alanlar</h2>
         </div>
-
         <div class="areas-grid">
-          <article class="area reveal">
-            <span class="area-no">I</span>
-            <h3 data-i18n="a1t">Ceza Hukuku</h3>
-            <p data-i18n="a1d">Soruşturma ve kovuşturma aşamalarında şüpheli, sanık ve mağdur müdafiliği/vekilliği; ifade ve duruşmalarda hukuki destek.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">II</span>
-            <h3 data-i18n="a2t">Aile Hukuku ve Boşanma</h3>
-            <p data-i18n="a2d">Anlaşmalı ve çekişmeli boşanma, velayet, nafaka, mal rejiminin tasfiyesi, tanıma–tenfiz ve koruma kararları.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">III</span>
-            <h3 data-i18n="a3t">Miras Hukuku</h3>
-            <p data-i18n="a3d">Mirasçılık belgesi, vasiyetname, miras paylaşımı, ortaklığın giderilmesi, tenkis ve mirasın reddi işlemleri.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">IV</span>
-            <h3 data-i18n="a4t">Gayrimenkul ve Kira Hukuku</h3>
-            <p data-i18n="a4d">Tapu iptal ve tescil, kira tespiti ve tahliye davaları, kat mülkiyeti uyuşmazlıkları, alım–satım süreçlerinde danışmanlık.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">V</span>
-            <h3 data-i18n="a5t">İş Hukuku</h3>
-            <p data-i18n="a5d">İşçi alacakları, kıdem ve ihbar tazminatı, işe iade, arabuluculuk süreçleri ve iş sözleşmelerinin hazırlanması.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">VI</span>
-            <h3 data-i18n="a6t">Borçlar ve Sözleşmeler Hukuku</h3>
-            <p data-i18n="a6d">Sözleşmelerin hazırlanması ve incelenmesi, alacak ve tazminat davaları, ihtarname süreçleri.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">VII</span>
-            <h3 data-i18n="a7t">İcra ve İflas Hukuku</h3>
-            <p data-i18n="a7d">İlamlı ve ilamsız icra takipleri, itirazın iptali, menfi tespit, haciz ve alacak tahsili süreçleri.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">VIII</span>
-            <h3 data-i18n="a8t">Ticaret ve Tüketici Hukuku</h3>
-            <p data-i18n="a8d">Şirket kuruluşu ve sözleşmeleri, ticari uyuşmazlıklar, tüketici hakem heyeti ve tüketici mahkemesi süreçleri.</p>
-          </article>
-          <article class="area reveal">
-            <span class="area-no">IX</span>
-            <h3 data-i18n="a9t">Yabancılar Hukuku</h3>
-            <p data-i18n="a9d">Türkiye'de yaşayan yabancılar için ikamet izni, yabancıların taşınmaz edinimi ve diğer hukuki işlemlerde danışmanlık.</p>
-          </article>
+          <article class="area reveal"><span class="area-no">I</span><h3 data-i18n="a1t">Ceza Hukuku</h3><p data-i18n="a1d">Soruşturma ve kovuşturma aşamalarında şüpheli, sanık ve mağdur müdafiliği/vekilliği; ifade ve duruşmalarda hukuki destek.</p></article>
+          <article class="area reveal"><span class="area-no">II</span><h3 data-i18n="a2t">Aile Hukuku ve Boşanma</h3><p data-i18n="a2d">Anlaşmalı ve çekişmeli boşanma, velayet, nafaka, mal rejiminin tasfiyesi ve koruma kararları.</p></article>
+          <article class="area reveal"><span class="area-no">III</span><h3 data-i18n="a3t">Miras Hukuku</h3><p data-i18n="a3d">Mirasçılık belgesi, vasiyetname, miras paylaşımı, ortaklığın giderilmesi, tenkis ve mirasın reddi işlemleri.</p></article>
+          <article class="area reveal"><span class="area-no">IV</span><h3 data-i18n="a4t">Tanıma ve Tenfiz</h3><p data-i18n="a4d">Yurt dışında verilen boşanma ve diğer mahkeme kararlarının Türkiye'de tanınması, tenfizi ve nüfus kayıtlarına işlenmesi.</p></article>
+          <article class="area reveal"><span class="area-no">V</span><h3 data-i18n="a5t">Gayrimenkul ve Kira Hukuku</h3><p data-i18n="a5d">Tapu iptal ve tescil, kira tespiti ve tahliye davaları, kat mülkiyeti uyuşmazlıkları, alım–satım süreçlerinde danışmanlık.</p></article>
+          <article class="area reveal"><span class="area-no">VI</span><h3 data-i18n="a6t">İş Hukuku</h3><p data-i18n="a6d">İşçi alacakları, kıdem ve ihbar tazminatı, işe iade, arabuluculuk süreçleri ve iş sözleşmelerinin hazırlanması.</p></article>
+          <article class="area reveal"><span class="area-no">VII</span><h3 data-i18n="a7t">İcra ve İflas Hukuku</h3><p data-i18n="a7d">İlamlı ve ilamsız icra takipleri, itirazın iptali, menfi tespit, haciz ve alacak tahsili süreçleri.</p></article>
+          <article class="area reveal"><span class="area-no">VIII</span><h3 data-i18n="a8t">Borçlar, Ticaret ve Tüketici Hukuku</h3><p data-i18n="a8d">Sözleşmelerin hazırlanması, alacak ve tazminat davaları, ticari uyuşmazlıklar, tüketici hakem heyeti ve tüketici mahkemesi süreçleri.</p></article>
+          <article class="area reveal"><span class="area-no">IX</span><h3 data-i18n="a9t">Yabancılar Hukuku</h3><p data-i18n="a9d">Türkiye'de yaşayan yabancılar için ikamet izni, yabancıların taşınmaz edinimi ve diğer hukuki işlemlerde danışmanlık.</p></article>
         </div>
       </div>
     </section>
 
+    <!-- ============ YURT DIŞINDA YAŞAYANLAR ============ -->
+    <section class="section" id="yurt-disi">
+      <div class="container abroad-intro">
+        <div class="abroad-text reveal">
+          <p class="section-label" data-i18n="abLabel">Yurt Dışında Yaşayanlar İçin</p>
+          <h2 data-i18n="abTitle">Siz uzaktayken, Türkiye'deki işleriniz güvende</h2>
+          <p data-i18n="abP1">Almanya, Danimarka, Hollanda, Avusturya, Fransa ve diğer ülkelerde yaşayan vatandaşlarımızın Türkiye'de görülmesi gereken dava ve işlemleri; çoğu zaman tek bir vekaletname ile, Türkiye'ye gelmenize gerek kalmadan yürütülebilir.</p>
+          <p data-i18n="abP2">Av. Belinda Kılıç, gurbetçilerimize Türkiye'deki dava ve işlemlerinde bugüne kadar pek çok kez destek olmuştur. Görüşmeler WhatsApp, görüntülü arama veya e-posta ile yapılır; belgeler dijital olarak paylaşılır ve süreç boyunca düzenli bilgi verilir.</p>
+          <ul class="check-list">
+            <li data-i18n="abC1">Türkiye'ye gelmeden, vekaletname ile takip</li>
+            <li data-i18n="abC2">WhatsApp ve görüntülü görüşme ile danışmanlık</li>
+            <li data-i18n="abC3">Zaman farkına uygun görüşme saatleri</li>
+            <li data-i18n="abC4">Türkçe ve İngilizce iletişim</li>
+          </ul>
+        </div>
+        <figure class="photo abroad-photo reveal" data-photo>
+          <img src="https://images.unsplash.com/photo-1654162148114-a04db0a49616?w=1100&amp;q=78&amp;auto=format&amp;fit=crop" alt="Antalya, Kaleiçi" loading="lazy" onerror="imgFail(this)">
+          <figcaption>Antalya · Kaleiçi</figcaption>
+        </figure>
+      </div>
+
+      <div class="container abroad-grid">
+        <article class="abroad-card reveal">
+          <h3 data-i18n="b1t">Tanıma ve Tenfiz Davaları</h3>
+          <p data-i18n="b1d">Yurt dışında aldığınız boşanma kararı Türkiye'de kendiliğinden geçerli olmaz; nüfusta hâlâ evli görünebilirsiniz. Kararın tanınması ve nüfusa işlenmesi, velayet ve nafaka gibi hükümlerin tenfizi sağlanır.</p>
+        </article>
+        <article class="abroad-card reveal">
+          <h3 data-i18n="b2t">Miras ve Veraset İşlemleri</h3>
+          <p data-i18n="b2d">Mirasçılık belgesi (veraset ilamı) alınması, taşınmazların mirasçılar adına intikali, veraset ve intikal vergisi beyanı, miras paylaşımı, ortaklığın giderilmesi ve mirasın reddi.</p>
+        </article>
+        <article class="abroad-card reveal">
+          <h3 data-i18n="b3t">Tapu ve Gayrimenkul</h3>
+          <p data-i18n="b3d">Türkiye'deki ev, arsa veya tarlanızın vekaletle alım–satımı, tapu iptal ve tescil davaları, ortak mülkiyet sorunları, kiracı tahliyesi ve kira alacakları.</p>
+        </article>
+        <article class="abroad-card reveal">
+          <h3 data-i18n="b4t">Vekaletname ve Belgeler</h3>
+          <p data-i18n="b4d">Konsoloslukta veya bulunduğunuz ülkede noter + apostil ile verilecek vekaletname hakkında yönlendirme; yabancı belgelerin tercüme ve onay süreçlerinde destek.</p>
+        </article>
+        <article class="abroad-card reveal">
+          <h3 data-i18n="b5t">Nüfus Kayıt İşlemleri</h3>
+          <p data-i18n="b5d">Yurt dışında yapılan evlilik ve boşanmaların tescili, isim, soyadı ve doğum tarihi gibi nüfus kaydı düzeltme davaları.</p>
+        </article>
+        <article class="abroad-card reveal">
+          <h3 data-i18n="b6t">Alacak, İcra ve Diğer Davalar</h3>
+          <p data-i18n="b6d">Türkiye'deki alacaklarınızın takibi, icra işlemleri, aile içi uyuşmazlıklar ve Türkiye'de görülen diğer tüm dava ve işlemler.</p>
+        </article>
+      </div>
+
+      <div class="container faq reveal">
+        <h3 class="faq-title" data-i18n="faqTitle">Sık Sorulan Sorular</h3>
+        <details>
+          <summary data-i18n="q1">Türkiye'ye gelmeden dava açabilir miyim?</summary>
+          <p data-i18n="q1a">Çoğu durumda evet. Bulunduğunuz ülkedeki Türk konsolosluğundan veya yerel noterden (apostil şerhli) vereceğiniz vekaletname ile dava ve işlemler avukatınız tarafından takip edilebilir. Duruşmalara kişisel katılımın gerekip gerekmediği somut dosyaya göre değerlendirilir.</p>
+        </details>
+        <details>
+          <summary data-i18n="q2">Yurt dışında boşandım. Türkiye'de de boşanmış sayılır mıyım?</summary>
+          <p data-i18n="q2a">Yabancı mahkeme kararı Türkiye'de kendiliğinden hüküm doğurmaz. Kararın Türkiye'de geçerli olması ve nüfus kaydınıza işlenmesi için tanıma davası açılır; koşulları uygunsa idari başvuru yolu da değerlendirilebilir. Aksi halde yeniden evlenme, miras ve mal paylaşımı gibi konularda sorun yaşanabilir.</p>
+        </details>
+        <details>
+          <summary data-i18n="q3">Türkiye'deki miras için ne yapmam gerekiyor?</summary>
+          <p data-i18n="q3a">İlk adım mirasçılık belgesinin alınmasıdır. Ardından taşınmazların mirasçılar adına tapuya tescili, veraset ve intikal vergisi beyanı ve gerekirse paylaşım veya ortaklığın giderilmesi süreçleri yürütülür. Mirası reddetmek istiyorsanız kanuni süreye (kural olarak üç ay) dikkat edilmelidir.</p>
+        </details>
+        <details>
+          <summary data-i18n="q4">Vekaletnameyi nasıl veririm?</summary>
+          <p data-i18n="q4a">Vekaletname, bulunduğunuz ülkedeki Türk konsolosluğunda düzenlenebilir ya da yerel noterde düzenlenip apostil şerhi alındıktan sonra Türkçe'ye tercüme ettirilir. Hangi yetkilerin yer alması gerektiği tarafınıza önceden bildirilir.</p>
+        </details>
+      </div>
+    </section>
+
     <!-- ============ SÜREÇ ============ -->
-    <section class="section" id="surec">
+    <section class="section section-soft" id="surec">
       <div class="container">
         <div class="section-head reveal">
           <p class="section-label" data-i18n="procLabel">Süreç</p>
           <h2 data-i18n="procTitle">Hukuki süreç nasıl ilerler?</h2>
         </div>
         <div class="steps">
-          <div class="step reveal">
-            <span class="step-no">01</span>
-            <h3 data-i18n="s1t">İlk Görüşme</h3>
-            <p data-i18n="s1d">Telefon, WhatsApp veya büroda yapılacak görüşmede olay dinlenir ve hukuki durum hakkında ön değerlendirme yapılır.</p>
-          </div>
-          <div class="step reveal">
-            <span class="step-no">02</span>
-            <h3 data-i18n="s2t">Dosya İncelemesi</h3>
-            <p data-i18n="s2d">Belgeler incelenir, olası yol haritası, süreler ve masraflar açık bir şekilde paylaşılır.</p>
-          </div>
-          <div class="step reveal">
-            <span class="step-no">03</span>
-            <h3 data-i18n="s3t">Takip ve Bilgilendirme</h3>
-            <p data-i18n="s3d">Dava veya işlem süresince gelişmeler düzenli olarak aktarılır, her aşamada sorulara yanıt verilir.</p>
-          </div>
+          <div class="step reveal"><span class="step-no">01</span><h3 data-i18n="s1t">İlk Görüşme</h3><p data-i18n="s1d">Telefon, WhatsApp, e-posta veya büroda yapılacak görüşmede olay dinlenir ve hukuki durum hakkında ön değerlendirme yapılır.</p></div>
+          <div class="step reveal"><span class="step-no">02</span><h3 data-i18n="s2t">Dosya İncelemesi</h3><p data-i18n="s2d">Belgeler incelenir, olası yol haritası, süreler ve masraflar açık bir şekilde paylaşılır.</p></div>
+          <div class="step reveal"><span class="step-no">03</span><h3 data-i18n="s3t">Takip ve Bilgilendirme</h3><p data-i18n="s3d">Dava veya işlem süresince gelişmeler düzenli olarak aktarılır, her aşamada sorulara yanıt verilir.</p></div>
         </div>
       </div>
     </section>
@@ -207,45 +265,42 @@
         <div class="contact-info reveal">
           <p class="section-label" data-i18n="contactLabel">İletişim</p>
           <h2 data-i18n="contactTitle">Randevu ve bilgi için</h2>
-          <p class="muted" data-i18n="contactNote">Görüşmeler randevu ile yapılmaktadır. Size en kısa sürede dönüş yapılacaktır.</p>
+          <p class="muted" data-i18n="contactNote">Görüşmeler randevu ile yapılmaktadır. Yurt dışından WhatsApp veya e-posta ile ulaşabilirsiniz; size en kısa sürede dönüş yapılacaktır.</p>
 
           <ul class="contact-list">
             <li>
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
-              <div>
-                <span class="cl-label" data-i18n="addrLabel">Adres</span>
-                <address>Çağlayan Mah. 2043 Sok. Doruk Apt. No:1/6<br>Muratpaşa / Antalya</address>
-              </div>
+              <div><span class="cl-label" data-i18n="addrLabel">Adres</span>
+                <address>Çağlayan Mah. 2043 Sok. Doruk Apt. No:1/6<br>Muratpaşa / Antalya</address></div>
             </li>
             <li>
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>
-              <div>
-                <span class="cl-label" data-i18n="phoneLabel">Telefon</span>
-                <a href="tel:+905079144378">0507 914 43 78</a>
-              </div>
+              <div><span class="cl-label" data-i18n="phoneLabel">Telefon / WhatsApp</span>
+                <a href="tel:+905079144378">+90 507 914 43 78</a></div>
+            </li>
+            <li>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"/></svg>
+              <div><span class="cl-label" data-i18n="mailLabel">E-posta</span>
+                <a href="mailto:belinda.kilic@outlook.com">belinda.kilic@outlook.com</a></div>
             </li>
           </ul>
 
           <div class="contact-buttons">
-            <a class="btn btn-light" href="https://wa.me/905079144378?text=Merhaba%20Av.%20Belinda%20K%C4%B1l%C4%B1%C3%A7%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" data-wa>
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-              WhatsApp
+            <a class="btn btn-light" href="https://wa.me/905079144378" target="_blank" rel="noopener" data-wa>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp
             </a>
-            <!-- FACEBOOK: Link unten ersetzen -->
-            <a class="btn btn-outline" href="https://www.facebook.com/FACEBOOK_SAYFA_ADI" target="_blank" rel="noopener">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-facebook"/></svg>
-              Facebook
+            <a class="btn btn-outline" href="mailto:belinda.kilic@outlook.com">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-mail"/></svg> <span data-i18n="btnMail">E-posta</span>
             </a>
-            <a class="btn btn-outline" href="tel:+905079144378">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>
-              <span data-i18n="btnCall">Hemen Arayın</span>
+                        <a class="btn btn-outline" href="https://www.facebook.com/share/1E9F9GUruh/" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-facebook"/></svg> Facebook
             </a>
           </div>
         </div>
 
         <div class="map reveal">
-          <iframe title="Harita / Map" src="https://www.google.com/maps?q=%C3%87a%C4%9Flayan%20Mahallesi%202043%20Sokak%201%20Muratpa%C5%9Fa%20Antalya&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%C3%87a%C4%9Flayan%20Mahallesi%202043%20Sokak%201%20Muratpa%C5%9Fa%20Antalya" target="_blank" rel="noopener" data-i18n="mapOpen">Google Haritalar'da aç →</a>
+          <iframe title="Harita / Map" src="https://www.google.com/maps?q=%C3%87a%C4%9Flayan%20Mahallesi%202043%20Sokak%201%20Muratpa%C5%9Fa%20Antalya&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=%C3%87a%C4%9Flayan%20Mahallesi%202043%20Sokak%201%20Muratpa%C5%9Fa%20Antalya" target="_blank" rel="noopener" data-i18n="mapOpen">Google Haritalar'da aç →</a>
         </div>
       </div>
     </section>
@@ -257,10 +312,12 @@
       <div>
         <p class="footer-brand">Av. Belinda Kılıç</p>
         <p class="footer-sub" data-i18n="footerSub">Hukuk ve Danışmanlık · Antalya Barosu · Sicil No: 10989</p>
+        <p class="footer-contact"><a href="mailto:belinda.kilic@outlook.com">belinda.kilic@outlook.com</a> · <a href="tel:+905079144378">+90 507 914 43 78</a></p>
       </div>
       <div class="footer-social">
         <a href="https://wa.me/905079144378" target="_blank" rel="noopener" aria-label="WhatsApp" data-wa><svg class="icon" viewBox="0 0 24 24"><use href="#i-whatsapp"/></svg></a>
-        <a href="https://www.facebook.com/FACEBOOK_SAYFA_ADI" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24"><use href="#i-facebook"/></svg></a>
+        <a href="https://www.facebook.com/share/1E9F9GUruh/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24"><use href="#i-facebook"/></svg></a>
+        <a href="mailto:belinda.kilic@outlook.com" aria-label="E-posta"><svg class="icon" viewBox="0 0 24 24"><use href="#i-mail"/></svg></a>
         <a href="tel:+905079144378" aria-label="Telefon"><svg class="icon" viewBox="0 0 24 24"><use href="#i-phone"/></svg></a>
       </div>
     </div>
@@ -272,7 +329,7 @@
       </details>
       <details>
         <summary data-i18n="kvkkTitle">KVKK ve Gizlilik</summary>
-        <p data-i18n="kvkkText">Bu site herhangi bir form aracılığıyla kişisel veri toplamamakta ve çerez kullanmamaktadır. Dil tercihiniz yalnızca kendi tarayıcınızda saklanır. Harita ve yazı tipleri Google hizmetleri üzerinden yüklenmektedir. WhatsApp, Facebook veya telefon yoluyla paylaştığınız bilgiler, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında ve avukatlık sır saklama yükümlülüğüne uygun olarak yalnızca talebinizin değerlendirilmesi amacıyla işlenir.</p>
+        <p data-i18n="kvkkText">Bu site herhangi bir form aracılığıyla kişisel veri toplamamakta ve çerez kullanmamaktadır. Dil tercihiniz yalnızca kendi tarayıcınızda saklanır. Harita, fotoğraflar ve yazı tipleri üçüncü taraf hizmetler (Google, Unsplash) üzerinden yüklenmektedir. WhatsApp, e-posta, Facebook veya telefon yoluyla paylaştığınız bilgiler, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında ve avukatlık sır saklama yükümlülüğüne uygun olarak yalnızca talebinizin değerlendirilmesi amacıyla işlenir.</p>
       </details>
     </div>
 
@@ -282,22 +339,23 @@
     </div>
   </footer>
 
-  <!-- Schwebende Buttons (WhatsApp + Facebook) -->
+  <!-- Schwebende Buttons -->
   <div class="float-buttons">
-    <a class="float-btn float-fb" href="https://www.facebook.com/FACEBOOK_SAYFA_ADI" target="_blank" rel="noopener" aria-label="Facebook">
+    <a class="float-btn float-fb" href="https://www.facebook.com/share/1E9F9GUruh/" target="_blank" rel="noopener" aria-label="Facebook">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-facebook"/></svg>
     </a>
-    <a class="float-btn float-wa" href="https://wa.me/905079144378?text=Merhaba%20Av.%20Belinda%20K%C4%B1l%C4%B1%C3%A7%2C%20randevu%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp" data-wa>
+    <a class="float-btn float-wa" href="https://wa.me/905079144378" target="_blank" rel="noopener" aria-label="WhatsApp" data-wa>
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
     </a>
   </div>
 
   <!-- Icons -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.69 8.24-8.23 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.450 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.910-9.91C21.95 6.45 17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.69 8.24-8.23 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.230-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21.95V13.7h2.77l.42-3.22H13.5V8.43c0-.93.26-1.57 1.6-1.57h1.7V3.98a22.7 22.7 0 0 0-2.48-.13c-2.46 0-4.14 1.5-4.14 4.25v2.38H7.4v3.22h2.78v8.25h3.32Z"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M21 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 4.2 2 2 0 0 1 3.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L7.1 9.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.73 2.02Z"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></g></symbol>
   </svg>
 
   <script src="script.js"></script>
